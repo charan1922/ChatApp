@@ -8,6 +8,7 @@ import { createStore } from 'redux';
 import reducer  from './src/reducers/'
 
 const store = createStore(reducer)
+console.log(store.getState(), "store")
 class App extends Component{
   render(){
     return(

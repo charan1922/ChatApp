@@ -14,8 +14,8 @@ class ChatScreen extends React.Component {
 
   submitName = () =>{
     const { text } = this.state
-    
-     saveChatTitle(text)
+      // console.log('dispatch', text)    
+    //  saveChatTitle(text)
     this.props.dispatch(addChat(text))
     this.setState({text:''})
     }

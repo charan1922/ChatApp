@@ -1,19 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView, FlatList } from "react-native";
 import { getChats } from "../utils/api";
 import { connect } from "react-redux";
 import { receiveChats } from "../actions/";
 
 class ChatInfo extends React.Component {
   componentDidMount() {
-    getChats().then(chats => this.props.receiveAllChats(chats));
+    // getChats().then(chats => this.props.receiveAllChats(chats));
   }
 
   render() {
     const { chats } = this.props;
     return (
       <ScrollView>
-        {Object.keys(chats).map(chat => {
+        {/* {Object.keys(chats).map(chat => {
           const { title } = chats[chat];
           return (
             <View key={chat}>
@@ -22,7 +22,20 @@ class ChatInfo extends React.Component {
             </View>
             
           );
-        })}
+        })} */}
+
+        {/* {
+          console.log(this.props, "chat data")
+        } */}
+
+        <FlatList
+          data={chats}
+           renderItem={({item}) =>
+            <View> 
+            <Text>{item.userName}</Text>
+            <Text>{item.msg}</Text>
+            </View>}
+        />
         
       </ScrollView>
     );
@@ -35,9 +48,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(chats) {
+function mapStateToProps(state) {
   return {
-    chats
+    chats: state
   };
 }
 
